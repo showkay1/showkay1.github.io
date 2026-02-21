@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 const App: React.FC = () => {
   const [isDark, setIsDark] = useState(true);
+  const [activeTab, setActiveTab] = useState('dashboard');
 
   useEffect(() => {
     if (isDark) {
@@ -27,10 +28,18 @@ const App: React.FC = () => {
             <h2 className="text-xl font-bold tracking-widest text-primary">FINTECH<span className="text-slate-800 dark:text-white">_ARCHITECT</span></h2>
           </div>
           <nav className="hidden md:flex items-center gap-8 uppercase tracking-widest text-[10px] font-bold">
-            <a className="text-primary border-b border-primary" href="#">Dashboard</a>
-            <a className="text-slate-400 hover:text-slate-800 dark:text-white transition-colors" href="#">Portfolio</a>
-            <a className="text-slate-400 hover:text-slate-800 dark:text-white transition-colors" href="#">Nodes</a>
-            <a className="text-slate-400 hover:text-slate-800 dark:text-white transition-colors" href="#">Vault</a>
+            <button 
+              onClick={() => setActiveTab('dashboard')} 
+              className={activeTab === 'dashboard' ? "text-primary border-b border-primary pb-1" : "text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors pb-1"}>
+              Dashboard
+            </button>
+            <button 
+              onClick={() => setActiveTab('portfolio')} 
+              className={activeTab === 'portfolio' ? "text-primary border-b border-primary pb-1" : "text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors pb-1"}>
+              Portfolio
+            </button>
+            <a className="text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors pb-1" href="#">Nodes</a>
+            <a className="text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors pb-1" href="#">Vault</a>
           </nav>
           <div className="flex items-center gap-4">
             <button className="bg-primary/10 border border-primary/30 text-primary px-4 py-2 rounded text-xs font-bold hover:bg-primary hover:text-slate-800 dark:text-white transition-all">
@@ -83,53 +92,7 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <div className="glass-panel p-8 rounded-xl space-y-6">
-            <h3 className="text-sm font-bold tracking-[0.2em] text-slate-800 dark:text-white uppercase border-b border-primary/30 pb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary">flight_takeoff</span>
-              2025 Global Footprint
-            </h3>
-
-            <div className="flex items-center gap-4 mb-4">
-              <div className="px-3 py-2 bg-primary/10 rounded border border-primary/20 text-center flex-1">
-                <div className="text-primary font-bold text-xl">10</div>
-                <div className="text-[9px] text-slate-500 uppercase tracking-tighter">Countries</div>
-              </div>
-              <div className="px-3 py-2 bg-primary/10 rounded border border-primary/20 text-center flex-1">
-                <div className="text-primary font-bold text-xl">26</div>
-                <div className="text-[9px] text-slate-500 uppercase tracking-tighter">Visits</div>
-              </div>
-            </div>
-
-            <div className="space-y-4 relative">
-              <div className="absolute left-2.5 top-0 bottom-0 w-px bg-primary/20"></div>
-
-              <div className="relative pl-8">
-                <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-primary rounded-full flex items-center justify-center">
-                  <div className="size-2 bg-primary rounded-full animate-pulse"></div>
-                </div>
-                <h4 className="text-sm font-bold text-slate-800 dark:text-white">North America</h4>
-                <p className="text-[10px] text-primary tracking-widest uppercase mb-1">USA • Canada</p>
-                <p className="text-xs text-slate-400">Expanding trans-pacific network nodes & operations.</p>
-              </div>
-
-              <div className="relative pl-8">
-                <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-slate-600 rounded-full flex items-center justify-center">
-                  <div className="size-2 bg-slate-600 rounded-full"></div>
-                </div>
-                <h4 className="text-sm font-bold text-slate-800 dark:text-white">Middle East</h4>
-                <p className="text-[10px] text-slate-400 tracking-widest uppercase mb-1">UAE • Saudi Arabia • Qatar</p>
-                <p className="text-xs text-slate-400">Global summits & investment infrastructure.</p>
-              </div>
-
-              <div className="relative pl-8">
-                <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-slate-600 rounded-full flex items-center justify-center">
-                  <div className="size-2 bg-slate-600 rounded-full"></div>
-                </div>
-                <h4 className="text-sm font-bold text-slate-800 dark:text-white">Southeast Asia</h4>
-                <p className="text-[10px] text-slate-400 tracking-widest uppercase">Singapore • Vietnam • Thailand<br />Indonesia • Malaysia</p>
-              </div>
-            </div>
-          </div>
+          
 
           <div className="glass-panel p-4 rounded-xl">
             <p className="text-[10px] font-bold text-slate-500 uppercase mb-2">Network Influence Area</p>
@@ -139,7 +102,8 @@ const App: React.FC = () => {
           </div>
         </aside>
 
-        <section className="col-span-12 lg:col-span-8 space-y-8">
+        {activeTab === 'dashboard' && (
+          <section className="col-span-12 lg:col-span-8 space-y-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-800/5 dark:border-white/5">
             <div>
               <h2 className="text-4xl font-black tracking-tight text-slate-800 dark:text-white mb-2">CORE COMPETENCIES</h2>
@@ -278,6 +242,59 @@ const App: React.FC = () => {
             </div>
           </div>
         </section>
+        )}
+        {activeTab === 'portfolio' && (
+          <section className="col-span-12 lg:col-span-8 space-y-8">
+            <h2 className="text-4xl font-black tracking-tight text-slate-800 dark:text-white mb-6">PORTFOLIO</h2>
+            <div className="glass-panel p-8 rounded-xl space-y-6">
+            <h3 className="text-sm font-bold tracking-[0.2em] text-slate-800 dark:text-white uppercase border-b border-primary/30 pb-4 flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary">flight_takeoff</span>
+              2025 Global Footprint
+            </h3>
+
+            <div className="flex items-center gap-4 mb-4">
+              <div className="px-3 py-2 bg-primary/10 rounded border border-primary/20 text-center flex-1">
+                <div className="text-primary font-bold text-xl">10</div>
+                <div className="text-[9px] text-slate-500 uppercase tracking-tighter">Countries</div>
+              </div>
+              <div className="px-3 py-2 bg-primary/10 rounded border border-primary/20 text-center flex-1">
+                <div className="text-primary font-bold text-xl">26</div>
+                <div className="text-[9px] text-slate-500 uppercase tracking-tighter">Visits</div>
+              </div>
+            </div>
+
+            <div className="space-y-4 relative">
+              <div className="absolute left-2.5 top-0 bottom-0 w-px bg-primary/20"></div>
+
+              <div className="relative pl-8">
+                <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-primary rounded-full flex items-center justify-center">
+                  <div className="size-2 bg-primary rounded-full animate-pulse"></div>
+                </div>
+                <h4 className="text-sm font-bold text-slate-800 dark:text-white">North America</h4>
+                <p className="text-[10px] text-primary tracking-widest uppercase mb-1">USA • Canada</p>
+                <p className="text-xs text-slate-400">Expanding trans-pacific network nodes & operations.</p>
+              </div>
+
+              <div className="relative pl-8">
+                <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-slate-600 rounded-full flex items-center justify-center">
+                  <div className="size-2 bg-slate-600 rounded-full"></div>
+                </div>
+                <h4 className="text-sm font-bold text-slate-800 dark:text-white">Middle East</h4>
+                <p className="text-[10px] text-slate-400 tracking-widest uppercase mb-1">UAE • Saudi Arabia • Qatar</p>
+                <p className="text-xs text-slate-400">Global summits & investment infrastructure.</p>
+              </div>
+
+              <div className="relative pl-8">
+                <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-slate-600 rounded-full flex items-center justify-center">
+                  <div className="size-2 bg-slate-600 rounded-full"></div>
+                </div>
+                <h4 className="text-sm font-bold text-slate-800 dark:text-white">Southeast Asia</h4>
+                <p className="text-[10px] text-slate-400 tracking-widest uppercase">Singapore • Vietnam • Thailand<br />Indonesia • Malaysia</p>
+              </div>
+            </div>
+          </div>
+          </section>
+        )}
       </main>
 
       <footer className="fixed bottom-0 left-0 right-0 glass-panel border-t border-primary/20 py-2 px-6 z-40 hidden md:block">
