@@ -45,10 +45,10 @@ const App: React.FC = () => {
               <div className="space-y-4 border-t border-white/10 pt-6">
                 <div className="flex justify-between items-center group cursor-pointer">
                   <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-primary text-xl">work_history</span>
-                    <span className="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">Experience</span>
+                    <span className="material-symbols-outlined text-primary text-xl">person</span>
+                    <span className="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">Age</span>
                   </div>
-                  <span className="text-primary font-bold">12+ YRS</span>
+                  <span className="text-primary font-bold">35</span>
                 </div>
                 <div className="flex justify-between items-center group cursor-pointer">
                   <div className="flex items-center gap-3">
@@ -62,7 +62,7 @@ const App: React.FC = () => {
                     <span className="material-symbols-outlined text-primary text-xl">public</span>
                     <span className="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">Location</span>
                   </div>
-                  <span className="text-xs text-slate-400">Singapore (HQ)</span>
+                  <span className="text-xs text-slate-400">China</span>
                 </div>
               </div>
             </div>
