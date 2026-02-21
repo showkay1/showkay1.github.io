@@ -1,24 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 
 const App: React.FC = () => {
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDark]);
   return (
     <>
       <header className="sticky top-0 z-50 glass-panel border-b border-primary/20 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setIsDark(!isDark)}
+              className="bg-primary/10 border border-primary/30 text-primary px-3 py-2 rounded text-xs font-bold hover:bg-primary hover:text-slate-800 dark:hover:text-white transition-all flex items-center gap-1">
+              <span className="material-symbols-outlined text-sm">{isDark ? 'light_mode' : 'dark_mode'}</span>
+            </button>
             <div className="size-10 bg-primary/20 rounded flex items-center justify-center border border-primary/50">
               <span className="material-symbols-outlined text-primary">deployed_code</span>
             </div>
-            <h2 className="text-xl font-bold tracking-widest text-primary">FINTECH<span className="text-white">_ARCHITECT</span></h2>
+            <h2 className="text-xl font-bold tracking-widest text-primary">FINTECH<span className="text-slate-800 dark:text-white">_ARCHITECT</span></h2>
           </div>
           <nav className="hidden md:flex items-center gap-8 uppercase tracking-widest text-[10px] font-bold">
             <a className="text-primary border-b border-primary" href="#">Dashboard</a>
-            <a className="text-slate-400 hover:text-white transition-colors" href="#">Portfolio</a>
-            <a className="text-slate-400 hover:text-white transition-colors" href="#">Nodes</a>
-            <a className="text-slate-400 hover:text-white transition-colors" href="#">Vault</a>
+            <a className="text-slate-400 hover:text-slate-800 dark:text-white transition-colors" href="#">Portfolio</a>
+            <a className="text-slate-400 hover:text-slate-800 dark:text-white transition-colors" href="#">Nodes</a>
+            <a className="text-slate-400 hover:text-slate-800 dark:text-white transition-colors" href="#">Vault</a>
           </nav>
           <div className="flex items-center gap-4">
-            <button className="bg-primary/10 border border-primary/30 text-primary px-4 py-2 rounded text-xs font-bold hover:bg-primary hover:text-white transition-all">
+            <button className="bg-primary/10 border border-primary/30 text-primary px-4 py-2 rounded text-xs font-bold hover:bg-primary hover:text-slate-800 dark:text-white transition-all">
               SYSTEM STATUS: OPTIMAL
             </button>
             <div className="size-10 rounded-full border border-primary/50 p-0.5">
@@ -42,25 +57,25 @@ const App: React.FC = () => {
                 <h1 className="text-2xl font-bold tracking-tight">김시호</h1>
                 <p className="text-primary font-medium tracking-widest text-xs uppercase mt-1">Senior Systems Architect</p>
               </div>
-              <div className="space-y-4 border-t border-white/10 pt-6">
+              <div className="space-y-4 border-t border-slate-800/10 dark:border-white/10 pt-6">
                 <div className="flex justify-between items-center group cursor-pointer">
                   <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-primary text-xl">person</span>
-                    <span className="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">Age</span>
+                    <span className="text-sm font-medium text-slate-400 group-hover:text-slate-800 dark:text-white transition-colors">Age</span>
                   </div>
                   <span className="text-primary font-bold">35</span>
                 </div>
                 <div className="flex justify-between items-center group cursor-pointer">
                   <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-primary text-xl">school</span>
-                    <span className="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">Education</span>
+                    <span className="text-sm font-medium text-slate-400 group-hover:text-slate-800 dark:text-white transition-colors">Education</span>
                   </div>
                   <span className="text-xs text-slate-400">MIT / Stanford</span>
                 </div>
                 <div className="flex justify-between items-center group cursor-pointer">
                   <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-primary text-xl">public</span>
-                    <span className="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">Location</span>
+                    <span className="text-sm font-medium text-slate-400 group-hover:text-slate-800 dark:text-white transition-colors">Location</span>
                   </div>
                   <span className="text-xs text-slate-400">China</span>
                 </div>
@@ -69,25 +84,25 @@ const App: React.FC = () => {
           </div>
 
           <div className="glass-panel p-8 rounded-xl space-y-6">
-            <h3 className="text-sm font-bold tracking-[0.2em] text-white uppercase border-b border-primary/30 pb-4 flex items-center gap-2">
+            <h3 className="text-sm font-bold tracking-[0.2em] text-slate-800 dark:text-white uppercase border-b border-primary/30 pb-4 flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">verified</span>
               Professional Nodes
             </h3>
             <div className="space-y-6 relative">
               <div className="absolute left-2.5 top-0 bottom-0 w-px bg-primary/20"></div>
               <div className="relative pl-8">
-                <div className="absolute left-0 top-1.5 size-5 bg-background-dark border border-primary rounded-full flex items-center justify-center">
+                <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-primary rounded-full flex items-center justify-center">
                   <div className="size-2 bg-primary rounded-full animate-pulse"></div>
                 </div>
-                <h4 className="text-sm font-bold text-white">VP Engineering</h4>
+                <h4 className="text-sm font-bold text-slate-800 dark:text-white">Head of Global Business</h4>
                 <p className="text-[10px] text-primary tracking-widest uppercase">Global Ledger Systems • 2021-Present</p>
                 <p className="text-xs text-slate-400 mt-1">Architected zero-latency settlement protocol.</p>
               </div>
               <div className="relative pl-8">
-                <div className="absolute left-0 top-1.5 size-5 bg-background-dark border border-slate-600 rounded-full flex items-center justify-center">
+                <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-slate-600 rounded-full flex items-center justify-center">
                   <div className="size-2 bg-slate-600 rounded-full"></div>
                 </div>
-                <h4 className="text-sm font-bold text-white">Lead AI Researcher</h4>
+                <h4 className="text-sm font-bold text-slate-800 dark:text-white">Lead AI Researcher</h4>
                 <p className="text-[10px] text-slate-400 tracking-widest uppercase">Cyber-Quant Lab • 2018-2021</p>
               </div>
             </div>
@@ -102,9 +117,9 @@ const App: React.FC = () => {
         </aside>
 
         <section className="col-span-12 lg:col-span-8 space-y-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/5">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-800/5 dark:border-white/5">
             <div>
-              <h2 className="text-4xl font-black tracking-tight text-white mb-2">CORE COMPETENCIES</h2>
+              <h2 className="text-4xl font-black tracking-tight text-slate-800 dark:text-white mb-2">CORE COMPETENCIES</h2>
               <p className="text-slate-400 max-w-xl">
                 Synthesizing advanced cryptographic frameworks with neural market analysis to redefine the future of sovereign digital finance.
               </p>
@@ -112,11 +127,11 @@ const App: React.FC = () => {
             <div className="flex gap-4">
               <div className="px-4 py-2 bg-primary/20 rounded border border-primary/40 text-center">
                 <div className="text-primary font-bold text-lg">99.9%</div>
-                <div className="text-[8px] text-white uppercase tracking-tighter">Uptime Architected</div>
+                <div className="text-[8px] text-slate-800 dark:text-white uppercase tracking-tighter">Uptime Architected</div>
               </div>
               <div className="px-4 py-2 bg-primary/20 rounded border border-primary/40 text-center">
                 <div className="text-primary font-bold text-lg">14+</div>
-                <div className="text-[8px] text-white uppercase tracking-tighter">Patents Filed</div>
+                <div className="text-[8px] text-slate-800 dark:text-white uppercase tracking-tighter">Patents Filed</div>
               </div>
             </div>
           </div>
@@ -124,12 +139,12 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="glass-panel p-6 rounded-xl group hover:glow-border-primary transition-all duration-300">
               <div className="flex justify-between items-start mb-6">
-                <div className="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                <div className="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-slate-800 dark:text-white transition-colors duration-500">
                   <span className="material-symbols-outlined text-3xl">token</span>
                 </div>
                 <span className="text-[10px] font-bold bg-white/5 px-2 py-1 rounded text-slate-400">S-CLASS SKILL</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Blockchain Engineering</h3>
+              <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Blockchain Engineering</h3>
               <p className="text-sm text-slate-400 mb-6 leading-relaxed">Expert in Layer-1 protocols, smart contract auditing, and DeFi liquidity pools architecture.</p>
               <div className="space-y-4">
                 <div className="space-y-1">
@@ -155,12 +170,12 @@ const App: React.FC = () => {
 
             <div className="glass-panel p-6 rounded-xl group hover:glow-border-primary transition-all duration-300">
               <div className="flex justify-between items-start mb-6">
-                <div className="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                <div className="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-slate-800 dark:text-white transition-colors duration-500">
                   <span className="material-symbols-outlined text-3xl">psychology</span>
                 </div>
                 <span className="text-[10px] font-bold bg-white/5 px-2 py-1 rounded text-slate-400">EXPERT</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Predictive AI</h3>
+              <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Predictive AI</h3>
               <p className="text-sm text-slate-400 mb-6 leading-relaxed">Applying Deep Learning models to market sentiment analysis and high-frequency trading bot optimization.</p>
               <div className="flex items-end gap-1 h-12 mb-4">
                 <div className="w-full bg-primary/20 group-hover:bg-primary transition-all duration-300" style={{ height: "40%" }}></div>
@@ -178,19 +193,19 @@ const App: React.FC = () => {
 
             <div className="glass-panel p-6 rounded-xl group hover:glow-border-primary transition-all duration-300">
               <div className="flex justify-between items-start mb-6">
-                <div className="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                <div className="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-slate-800 dark:text-white transition-colors duration-500">
                   <span className="material-symbols-outlined text-3xl">admin_panel_settings</span>
                 </div>
                 <span className="text-[10px] font-bold bg-white/5 px-2 py-1 rounded text-slate-400">MASTER</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Zero-Trust Security</h3>
+              <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Zero-Trust Security</h3>
               <p className="text-sm text-slate-400 mb-6 leading-relaxed">Hardening fintech infrastructures through biometric authentication and multi-sig vault protocols.</p>
               <div className="grid grid-cols-2 gap-2">
-                <div className="flex items-center gap-2 p-2 bg-white/5 rounded border border-white/5 group-hover:border-primary/20 transition-all">
+                <div className="flex items-center gap-2 p-2 bg-white/5 rounded border border-slate-800/5 dark:border-white/5 group-hover:border-primary/20 transition-all">
                   <span className="material-symbols-outlined text-primary text-sm">key</span>
                   <span className="text-[9px] font-bold uppercase text-slate-300">Encryption</span>
                 </div>
-                <div className="flex items-center gap-2 p-2 bg-white/5 rounded border border-white/5 group-hover:border-primary/20 transition-all">
+                <div className="flex items-center gap-2 p-2 bg-white/5 rounded border border-slate-800/5 dark:border-white/5 group-hover:border-primary/20 transition-all">
                   <span className="material-symbols-outlined text-primary text-sm">fingerprint</span>
                   <span className="text-[9px] font-bold uppercase text-slate-300">Biometrics</span>
                 </div>
@@ -199,12 +214,12 @@ const App: React.FC = () => {
 
             <div className="glass-panel p-6 rounded-xl group hover:glow-border-primary transition-all duration-300">
               <div className="flex justify-between items-start mb-6">
-                <div className="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                <div className="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-slate-800 dark:text-white transition-colors duration-500">
                   <span className="material-symbols-outlined text-3xl">hub</span>
                 </div>
                 <span className="text-[10px] font-bold bg-white/5 px-2 py-1 rounded text-slate-400">ARCHITECT</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Quant Architecture</h3>
+              <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Quant Architecture</h3>
               <p className="text-sm text-slate-400 mb-6 leading-relaxed">Designing high-performance data streams for real-time financial reporting and global bank nodes.</p>
               <div className="relative h-1 bg-white/5 rounded-full overflow-hidden mb-2">
                 <div className="absolute inset-y-0 left-0 bg-primary/60 w-3/4 animate-[pulse_2s_infinite]"></div>
@@ -214,26 +229,26 @@ const App: React.FC = () => {
           </div>
 
           <div className="glass-panel p-6 rounded-xl">
-            <h4 className="text-xs font-bold text-white uppercase tracking-[0.2em] mb-6">Protocol Certifications</h4>
+            <h4 className="text-xs font-bold text-slate-800 dark:text-white uppercase tracking-[0.2em] mb-6">Protocol Certifications</h4>
             <div className="flex flex-wrap gap-4">
-              <div className="flex items-center gap-3 px-4 py-3 bg-white/5 border border-white/10 rounded-lg">
+              <div className="flex items-center gap-3 px-4 py-3 bg-white/5 border border-slate-800/10 dark:border-white/10 rounded-lg">
                 <span className="material-symbols-outlined text-primary">new_releases</span>
                 <div>
-                  <div className="text-[10px] font-bold text-white leading-none">AWS Certified</div>
+                  <div className="text-[10px] font-bold text-slate-800 dark:text-white leading-none">AWS Certified</div>
                   <div className="text-[8px] text-slate-500 uppercase">Solutions Architect</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3 px-4 py-3 bg-white/5 border border-white/10 rounded-lg">
+              <div className="flex items-center gap-3 px-4 py-3 bg-white/5 border border-slate-800/10 dark:border-white/10 rounded-lg">
                 <span className="material-symbols-outlined text-primary">shield</span>
                 <div>
-                  <div className="text-[10px] font-bold text-white leading-none">CISSP</div>
+                  <div className="text-[10px] font-bold text-slate-800 dark:text-white leading-none">CISSP</div>
                   <div className="text-[8px] text-slate-500 uppercase">Security Professional</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3 px-4 py-3 bg-white/5 border border-white/10 rounded-lg">
+              <div className="flex items-center gap-3 px-4 py-3 bg-white/5 border border-slate-800/10 dark:border-white/10 rounded-lg">
                 <span className="material-symbols-outlined text-primary">link</span>
                 <div>
-                  <div className="text-[10px] font-bold text-white leading-none">Hyperledger</div>
+                  <div className="text-[10px] font-bold text-slate-800 dark:text-white leading-none">Hyperledger</div>
                   <div className="text-[8px] text-slate-500 uppercase">Certified Developer</div>
                 </div>
               </div>
