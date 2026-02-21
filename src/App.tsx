@@ -16,7 +16,7 @@ const App: React.FC = () => {
       <header className="sticky top-0 z-50 glass-panel border-b border-primary/20 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={() => setIsDark(!isDark)}
               className="bg-primary/10 border border-primary/30 text-primary px-3 py-2 rounded text-xs font-bold hover:bg-primary hover:text-slate-800 dark:hover:text-white transition-all flex items-center gap-1">
               <span className="material-symbols-outlined text-sm">{isDark ? 'light_mode' : 'dark_mode'}</span>
@@ -85,25 +85,48 @@ const App: React.FC = () => {
 
           <div className="glass-panel p-8 rounded-xl space-y-6">
             <h3 className="text-sm font-bold tracking-[0.2em] text-slate-800 dark:text-white uppercase border-b border-primary/30 pb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary">verified</span>
-              Professional Nodes
+              <span className="material-symbols-outlined text-primary">flight_takeoff</span>
+              2025 Global Footprint
             </h3>
-            <div className="space-y-6 relative">
+
+            <div className="flex items-center gap-4 mb-4">
+              <div className="px-3 py-2 bg-primary/10 rounded border border-primary/20 text-center flex-1">
+                <div className="text-primary font-bold text-xl">10</div>
+                <div className="text-[9px] text-slate-500 uppercase tracking-tighter">Countries</div>
+              </div>
+              <div className="px-3 py-2 bg-primary/10 rounded border border-primary/20 text-center flex-1">
+                <div className="text-primary font-bold text-xl">26</div>
+                <div className="text-[9px] text-slate-500 uppercase tracking-tighter">Visits</div>
+              </div>
+            </div>
+
+            <div className="space-y-4 relative">
               <div className="absolute left-2.5 top-0 bottom-0 w-px bg-primary/20"></div>
+
               <div className="relative pl-8">
                 <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-primary rounded-full flex items-center justify-center">
                   <div className="size-2 bg-primary rounded-full animate-pulse"></div>
                 </div>
-                <h4 className="text-sm font-bold text-slate-800 dark:text-white">Head of Global Business</h4>
-                <p className="text-[10px] text-primary tracking-widest uppercase">Global Ledger Systems • 2021-Present</p>
-                <p className="text-xs text-slate-400 mt-1">Architected zero-latency settlement protocol.</p>
+                <h4 className="text-sm font-bold text-slate-800 dark:text-white">North America</h4>
+                <p className="text-[10px] text-primary tracking-widest uppercase mb-1">USA • Canada</p>
+                <p className="text-xs text-slate-400">Expanding trans-pacific network nodes & operations.</p>
               </div>
+
               <div className="relative pl-8">
                 <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-slate-600 rounded-full flex items-center justify-center">
                   <div className="size-2 bg-slate-600 rounded-full"></div>
                 </div>
-                <h4 className="text-sm font-bold text-slate-800 dark:text-white">Lead AI Researcher</h4>
-                <p className="text-[10px] text-slate-400 tracking-widest uppercase">Cyber-Quant Lab • 2018-2021</p>
+                <h4 className="text-sm font-bold text-slate-800 dark:text-white">Middle East</h4>
+                <p className="text-[10px] text-slate-400 tracking-widest uppercase mb-1">UAE • Saudi Arabia • Qatar</p>
+                <p className="text-xs text-slate-400">Global summits & investment infrastructure.</p>
+              </div>
+
+              <div className="relative pl-8">
+                <div className="absolute left-0 top-1.5 size-5 bg-white dark:bg-background-dark border border-slate-600 rounded-full flex items-center justify-center">
+                  <div className="size-2 bg-slate-600 rounded-full"></div>
+                </div>
+                <h4 className="text-sm font-bold text-slate-800 dark:text-white">Southeast Asia</h4>
+                <p className="text-[10px] text-slate-400 tracking-widest uppercase">Singapore • Vietnam • Thailand<br />Indonesia • Malaysia</p>
               </div>
             </div>
           </div>
